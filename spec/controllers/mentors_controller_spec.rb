@@ -48,8 +48,6 @@ RSpec.describe Api::V1::MentorsController, type: :controller do
     end
   end
 
-  # Add these tests to your existing test file
-
   describe 'POST #create' do
     let(:valid_attributes) do
       { mentor: { name: 'John Doe', occupation: 'Software Engineer', about: 'Experienced mentor', hourly_fee: 50.0,

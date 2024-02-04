@@ -10,9 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_04_035639) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_04_043118) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "mentors", force: :cascade do |t|
+    t.string "name"
+    t.string "occupation"
+    t.text "about"
+    t.decimal "hourly_fee", precision: 10, scale: 5
+    t.integer "year_of_experience", default: 0
+    t.string "location"
+    t.string "skills"
+    t.string "photo_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"

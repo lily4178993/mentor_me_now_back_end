@@ -34,6 +34,12 @@ class Api::V1::MentorsController < ApplicationController
     @mentor.destroy
   end
 
+  # PATCH/PUT /api/v1/mentors/:id
+  def hide_mentor
+    @mentor = Mentor.find(params[:id])
+    @mentor.remove_mentor
+  end
+
   private
 
   # Private method to set the mentor using the id parameter

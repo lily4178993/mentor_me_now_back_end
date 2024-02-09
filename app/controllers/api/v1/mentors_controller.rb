@@ -35,9 +35,10 @@ class Api::V1::MentorsController < ApplicationController
   end
 
   # PATCH/PUT /api/v1/mentors/:id
-  def hide_mentor
+  def remove_mentor
     @mentor = Mentor.find(params[:id])
-    @mentor.remove_mentor
+    @mentor.update(remove: true)
+    render json: { message: 'Mentor marked for removal' }, status: :ok
   end
 
   private

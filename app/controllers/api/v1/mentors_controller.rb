@@ -41,6 +41,12 @@ class Api::V1::MentorsController < ApplicationController
     render json: { message: 'Mentor marked for removal' }, status: :ok
   end
 
+  def restore_mentor
+    @mentor = Mentor.find(params[:id])
+    @mentor.update(remove: false)
+    render json: { message: 'Mentor restored' }, status: :ok
+  end
+
   private
 
   # Private method to set the mentor using the id parameter

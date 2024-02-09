@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :users, only: [:create]
       resources :mentors, only: [:create, :index, :show, :destroy] do
         patch 'remove_mentor', on: :member
+        patch 'restore_mentor', on: :member
       end
       resources :reservations, only: [:create, :index]
     end

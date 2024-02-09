@@ -11,7 +11,7 @@ class Api::V1::ReservationsController < ApplicationController
   def create
     reservation = Reservation.new(reservation_params)
     if reservation.save
-      render json: reservation, status: :created
+      render json: reservation.as_json(methods: :formatted_times), status: :created
     else
       render json: reservation.errors, status: :unprocessable_entity
     end

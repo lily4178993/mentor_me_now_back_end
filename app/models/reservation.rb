@@ -7,8 +7,8 @@ class Reservation < ApplicationRecord
   # Custom method to format the start and end times
   def formatted_times
     {
-      start_time: start_time.strftime('%H:%M'),
-      end_time: end_time.strftime('%H:%M')
+      start_time: start_time.strftime('%I:%M %p'),
+      end_time: end_time.strftime('%I:%M %p')
     }
   end
 end

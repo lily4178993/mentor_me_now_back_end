@@ -3,7 +3,7 @@ class Api::V1::ReservationsController < ApplicationController
   # Action to list all reservations
   def index
     reservations = Reservation.all
-    render json: reservations
+    render json: reservations.as_json(methods: :formatted_times)
   end
 
   # POST /api/v1/reservations

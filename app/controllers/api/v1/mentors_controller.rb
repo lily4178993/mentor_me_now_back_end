@@ -5,18 +5,25 @@ class Api::V1::MentorsController < ApplicationController
   # GET /api/v1/mentors
   # Action to list all mentors
   def index
-    @mentors = Mentor.all
+    @mentors = Mentor.where(remove: false)
     render json: @mentors
   end
 
+  # List all removed mentors
+  # GET /api/v1/mentors/removed_mentors
+  def removed_mentors
+    @mentors = Mentor.where(remove: true)
+    render json: @mentors
+  end
+
+  # Show details of a specific mentor
   # GET /api/v1/mentors/:id
-  # Action to show details of a specific mentor
   def show
     render json: @mentor
   end
 
+  # Create a new mentor
   # POST /api/v1/mentors
-  # Action to create a new mentor
   def create
     @mentor = Mentor.new(mentor_params)
 
@@ -32,6 +39,13 @@ class Api::V1::MentorsController < ApplicationController
   def destroy
     @mentor = Mentor.find(params[:id])
     @mentor.destroy
+  end
+
+  # PATCH/PUT /api/v1/mentors/:id
+  def remove_mentor
+    @mentor = Mentor.find(params[:id])
+    @mentor.update(remove: !@mentor.remove)
+    render json: { message: 'Mentor marked for removal' }, status: :ok
   end
 
   private

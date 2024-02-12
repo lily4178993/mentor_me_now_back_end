@@ -32,7 +32,7 @@ class Api::V1::UsersController < ApplicationController
   def user_reservations
     user = User.find(params[:id])
     reservations = user.reservations
-    render json: reservations
+    render json: reservations.as_json(methods: :formatted_times)
   end
 
   private

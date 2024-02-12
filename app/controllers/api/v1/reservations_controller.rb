@@ -3,7 +3,7 @@ class Api::V1::ReservationsController < ApplicationController
   # Action to list all reservations
   def index
     reservations = Reservation.all
-    render json: reservations
+    render json: reservations.as_json(methods: :formatted_times)
   end
 
   # POST /api/v1/reservations
@@ -11,7 +11,7 @@ class Api::V1::ReservationsController < ApplicationController
   def create
     reservation = Reservation.new(reservation_params)
     if reservation.save
-      render json: reservation, status: :created
+      render json: reservation.as_json(methods: :formatted_times), status: :created
     else
       render json: reservation.errors, status: :unprocessable_entity
     end

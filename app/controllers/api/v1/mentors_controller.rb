@@ -10,7 +10,7 @@ class Api::V1::MentorsController < ApplicationController
   end
 
   # List all removed mentors
-  # GET /api/v1/mentors/removed_mentors
+  # GET /api/v1/removed_mentors
   def removed_mentors
     @mentors = Mentor.where(remove: true)
     render json: @mentors
@@ -41,7 +41,7 @@ class Api::V1::MentorsController < ApplicationController
     @mentor.destroy
   end
 
-  # PATCH/PUT /api/v1/mentors/:id
+  # PATCH/PUT /api/v1/mentors/:id/remove_mentor
   def remove_mentor
     @mentor = Mentor.find(params[:id])
     @mentor.update(remove: !@mentor.remove)

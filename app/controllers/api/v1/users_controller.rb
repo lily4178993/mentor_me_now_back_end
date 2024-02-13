@@ -20,6 +20,35 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  # GET /api/v1/users
+  # This method returns a JSON representation of all users.
+  def index
+    users = User.all
+    render json: users
+  end
+
+  # GET /api/v1/users/:id
+  # This method returns a JSON representation of the user with the given ID.
+  def show
+    user = User.find(params[:id])
+    render json: user if user
+  end
+
+  # GET /api/v1/users/find_by_username
+  # This method returns a JSON representation of the user with the given username.
+  def find_by_username
+    user = User.find_by(username: params[:username])
+    render json: user
+  end
+
+  # GET /api/v1/users/:user_id/reservations
+  # List all reservations including the mentor information for a given user
+  def user_reservations
+    user = User.find(params[:id])
+    reservations = user.reservations
+    render json: reservations.as_json(methods: :formatted_times)
+  end
+
   private
 
   # This private method is used to whitelist the parameters that can be used to

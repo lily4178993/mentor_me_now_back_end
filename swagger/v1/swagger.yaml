@@ -94,8 +94,8 @@ paths:
         '404':
           description: User not found
 
+  paths:
   /api/v1/mentors:
-  #mentors endpoints here
     get:
       summary: List all mentors
       responses:
@@ -159,7 +159,7 @@ paths:
           description: No Content
         '404':
           description: Mentor not found
-    /api/v1/mentors/{id}/remove_mentor:
+  /api/v1/mentors/{id}/remove_mentor:
     patch:
       summary: Mark a mentor for removal
       parameters:
@@ -171,28 +171,28 @@ paths:
       responses:
         '200':
           description: OK
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  message:
-                    type: string
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
         '404':
-          description: Mentor not found
-  /api/v1/mentors/removed_mentors:
+          description: Mentor not found    
+  /api/v1/removed_mentors:
     get:
       summary: List all removed mentors
       responses:
         '200':
           description: A list of removed mentors
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Mentor'
-
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Mentor'
+                
   /api/v1/reservations:
   #reservations endpoints here
     get:

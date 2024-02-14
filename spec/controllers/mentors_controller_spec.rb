@@ -14,7 +14,7 @@ RSpec.describe Api::V1::MentorsController, type: :controller do
       json_response = JSON.parse(response.body)
       expect(json_response.first.keys)
         .to match_array(%w[id name occupation about hourly_fee
-                           year_of_experience location skills photo_url created_at updated_at])
+                           year_of_experience location skills photo_url remove created_at updated_at])
     end
   end
 
@@ -27,8 +27,10 @@ RSpec.describe Api::V1::MentorsController, type: :controller do
 
     it 'JSON body response contains expected mentor attributes' do
       json_response = JSON.parse(response.body)
-      expect(json_response.keys).to match_array(%w[id name occupation about hourly_fee
-                                                   year_of_experience location skills photo_url created_at updated_at])
+      expect(json_response.keys).to match_array(
+        %w[id name occupation about hourly_fee year_of_experience
+           location skills photo_url remove created_at updated_at]
+      )
     end
 
     it 'hourly_fee is a non-negative number' do
@@ -79,21 +81,6 @@ RSpec.describe Api::V1::MentorsController, type: :controller do
       it 'returns a validation failure message' do
         expect(response.body).to match(/can't be blank/)
       end
-    end
-  end
-
-  describe 'DELETE #destroy' do
-    let!(:mentor) { create(:mentor) }
-
-    it 'deletes the mentor' do
-      expect do
-        delete :destroy, params: { id: mentor.id }
-      end.to change(Mentor, :count).by(-1)
-    end
-
-    it 'returns status code 204' do
-      delete :destroy, params: { id: mentor.id }
-      expect(response).to have_http_status(:no_content)
     end
   end
 end

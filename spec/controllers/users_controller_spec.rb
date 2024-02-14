@@ -40,4 +40,44 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       end
     end
   end
+  describe 'GET #show' do
+    context 'when the user exists' do
+      let(:user) { create(:user) }
+
+      before { get :show, params: { id: user.id } }
+
+      it 'returns the user' do
+        json_response = JSON.parse(response.body)
+        expect(json_response['username']).to eq(user.username)
+      end
+    end
+  end
+  describe 'GET #user_reservations' do
+    context 'when the user exists' do
+      let(:user) { create(:user) }
+      let(:mentor) { create(:mentor) }
+      let(:reservation) { create(:reservation, user:, mentor:) }
+
+      before { get :user_reservations, params: { id: user.id } }
+
+      it 'returns the user reservations' do
+        user.reservations.each do |reservation|
+          puts "result: #{reservation.id}"
+        end
+      end
+    end
+  end
+
+  describe 'GET #find_by_username' do
+    context 'when the user exists' do
+      let(:user) { create(:user) }
+
+      before { get :find_by_username, params: { username: user.username } }
+
+      it 'returns the user' do
+        json_response = JSON.parse(response.body)
+        expect(json_response['username']).to eq(user.username)
+      end
+    end
+  end
 end

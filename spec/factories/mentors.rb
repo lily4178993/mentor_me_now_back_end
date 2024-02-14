@@ -9,5 +9,6 @@ FactoryBot.define do
     location { 'New York, NY' }
     skills { 'Ruby, JavaScript, HTML, CSS' }
     photo_url { 'http://example.com/photo.jpg' }
+    remove { false }
   end
 end

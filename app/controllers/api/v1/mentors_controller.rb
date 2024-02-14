@@ -38,7 +38,13 @@ class Api::V1::MentorsController < ApplicationController
   # Action to delete a mentor
   def destroy
     @mentor = Mentor.find(params[:id])
-    @mentor.destroy
+    if @mentor.destroy
+      render json: { message: 'Mentor successfully deleted' }, status: :ok
+    else
+      render json: { error: 'Failed to delete mentor' }, status: :unprocessable_entity
+    end
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: 'Mentor not found' }, status: :not_found
   end
 
   # PATCH/PUT /api/v1/mentors/:id/remove_mentor

@@ -12,6 +12,7 @@
   - [Install](#install)
 - [Usage](#usage)
 - [Tests](#tests)
+- [Kanban Board](#kanban-board)
 - [Author](#author)
 - [Future Features](#future-features)
 - [Contributing](#contributing)
@@ -127,6 +128,11 @@ To run the test suite, execute the following commands:
 rails db:migrate RAILS_ENV=test
 rspec
 ```
+
+## Kanban Board <a name="kanban-board"></a>
+- [Kanban board link](https://github.com/users/martinkarugaba/projects/11/views/1)
+- [Kanban board initial state](./kabanboardinitialstate.png)
+- We are a team of 3 members as indicated in the authors section
 
 ## Author <a name="author"></a>
 

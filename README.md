@@ -1,4 +1,11 @@
-# README <a name="readme-top"></a>
+# MENTOR ME NOW APP<a name="readme-top"></a>
+
+<div align="center">
+  <img src="./app/image/MENTOR ME NOW.gif" alt="MentorMeNow logo"/>
+  <br/>
+  <br/>
+  <br/>
+</div>
 
 ## Table of Contents
 
@@ -13,7 +20,7 @@
 - [Usage](#usage)
 - [Tests](#tests)
 - [Kanban Board](#kanban-board)
-- [Author](#author)
+- [Authors](#author)
 - [Future Features](#future-features)
 - [Contributing](#contributing)
 - [Show your support](#show-your-support)
@@ -102,7 +109,7 @@ bundle install
 
 ### Install <a name="install"></a>
 
-Populate greetings data in the database by running the following commands:
+Populate data in the database by running the following commands:
 
 ```bash
 rails db:create
@@ -134,7 +141,7 @@ rspec
 - [Kanban board initial state](./kabanboardinitialstate.png)
 - We are a team of 3 members as indicated in the authors section
 
-## Author <a name="author"></a>
+## Authors <a name="author"></a>
 
 - Martin Karugaba - [@martinkarugaba](https://github.com/martinkarugaba)
 - Ayokunnumi Omololu - [@Ayokunnumi1](https://github.com/Ayokunnumi1)

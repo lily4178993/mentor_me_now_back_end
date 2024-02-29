@@ -4,6 +4,7 @@ ruby '3.2.2'
 
 gem 'rswag-api'
 gem 'rswag-ui'
+gem 'sprockets-rails'
 
 gem 'dotenv-rails', groups: %i[development test]
 

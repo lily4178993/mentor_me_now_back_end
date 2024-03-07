@@ -30,7 +30,7 @@ module MentorMeNowBackEnd
     config.api_only = true
     # config.middleware.insert_before 0, Rack::Cors do
     #   allow do
-    #     origins 'https://mentor-me-now-front-end-app.vercel.app' # allows requests from any host
+    #     origins 'https://mentor-me-now.vercel.app' # allows requests from any host
     #     resource '*',
     #       headers: :any,
     #       methods: [:get, :post, :put, :patch, :delete, :options, :head]
